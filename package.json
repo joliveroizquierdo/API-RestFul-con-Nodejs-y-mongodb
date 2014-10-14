@@ -1,0 +1,26 @@
+{
+  "name": "Mangakas",
+  "version": "1.0.0",
+  "description": "Api Restfull para practicar con el MEAN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "express",
+    "angularjs"
+  ],
+  "author": "Jorge Armando Olivero",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~4.3.1",
+    "mongoose": "~3.8.11",
+    "body-parser": "~1.2.2",
+    "jade": "~1.3.1",
+    "nodemon": "~1.1.1",
+    "method-override": "~1.0.2"
+  }
+}
