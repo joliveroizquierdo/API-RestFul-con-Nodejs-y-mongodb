@@ -1,24 +1,26 @@
 (function () {
   'use strict';
-    
-    angular.module('appServices', [])
-           .factory('listarMangas', listarMangas)
-           .factory('insertarManga', insertarManga);
-    
+
+  angular.module('appServices', [])
+         .factory('factoryMangas', function($http){
+
             var urlBase = '/api/mangas';
-    
-                function listarMangas($http){
+            var servicios = {};
 
-                    return $http.get(urlBase);
+              servicios.obtenerMangas = function () {
 
-                }
+                 return $http.get(urlBase);
 
-                function insertarManga($http){
-                	
-                	return $http.post(urlBase);
+              };
 
-                	//return {'mensaje':'Hola'};
+              servicios.guardarManga = function (datos) {
 
-                }
+                return $http.post(urlBase, datos);
+
+              }
+
+          return servicios;
+
+         });
 
 })();

@@ -5,14 +5,11 @@
            .controller('ListarCtrl', ListarMangas)
            .controller('InsertarCtrl', InsertarManga);
     
-                //ListarMangas();para ver si se ejecuta el lsitar despues de insertar
+                function ListarMangas($scope, factoryMangas){
 
-                function ListarMangas($scope, listarMangas){
-
-                    listarMangas.success(function(data){
+                    factoryMangas.obtenerMangas().success(function(data){
                         
                         $scope.listado = data;
-                       //console.log(data);
 
                     }).error(function(error){
                             alert(error);
@@ -20,28 +17,21 @@
                     
                 }
 
-                function InsertarManga($scope, $location, insertarManga){
+                function InsertarManga($scope, factoryMangas, $location){
 
                     $scope.manga = {};
 
-                   /*$scope.insertar = function(datos){
+                    $scope.insertar = function(){
                       
-                      insertarManga.success(function(data){
-                        alert(data.mensaje +' '+ $scope.manga.nombre);
-                        $scope.manga = {};
-                        //si se guardan los datos, pero no se mestran a menos que se vuelva recargar la pagina, investigar comomhacer para que se muestren los datos despues de guardarlos
-                        $location.path("/api/mangas");
+                      factoryMangas.guardarManga($scope.manga).success(function(data){
+                          alert(data.mensaje +' '+ $scope.manga.nombre);
+                          $scope.manga = {};
+                          $location.path('/api/mangas');
                       }).error(function(data){
-                        alert('error al inserta regrese otro dia');
+                          alert('error al insertar regrese otro dia');
                       });
       
-                    }*/
-
-                    $scope.insertar = function(){
-                      //console.log($scope.manga);
-                      insertarManga;                        
-    
-                     }
+                    }
 
                 }
 
