@@ -4,7 +4,9 @@
     angular.module('app', ['ngRoute', 'appControllers'])
            .config(config);
 
-              function config ($routeProvider) {
+              function config ($routeProvider, $locationProvider) {
+
+                //$locationProvider.html5Mode(true);
 
                 $routeProvider
 
@@ -13,7 +15,8 @@
                         controller: 'ListarCtrl'
                 })
                 .when('/insertar', {
-                       //templateUrl: 'views/salir.html',
+                       templateUrl: 'views/insertar.html',
+                       controller: 'InsertarCtrl'
                 })
                 .otherwise({
                       redirectTo: '/'

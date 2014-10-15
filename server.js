@@ -13,6 +13,7 @@ app.set('views', __dirname + '/views');
 app.use(bodyParser());
 app.use(methodOverride());
 app.use(express.static(__dirname + '/public'));
+//app.use(express.static(path.join(__dirname, './client')));
 
 /*El servidor siempre ejecuta el index de la carpeta que le indique en la linea anterior, se puede evitar usar res.sendfile,
 pero en caso de usar otra ruta asi se debe usar. Ejemplo:
@@ -20,7 +21,8 @@ pero en caso de usar otra ruta asi se debe usar. Ejemplo:
 app.get('*', function(req, res) {
 	res.sendfile('public/views/index.html');
 });*/
-//Otra opcion es utilizar el codigo de la revista
+//Otra opcion que cuando sea / o * renderice el index
+
 app.use('/api', routes);
 
 
