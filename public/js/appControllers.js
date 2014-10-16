@@ -3,7 +3,8 @@
     
     angular.module('appControllers', ['appServices'])
            .controller('ListarCtrl', ListarMangas)
-           .controller('InsertarCtrl', InsertarManga);
+           .controller('InsertarCtrl', InsertarManga)
+           .controller('DescripcionCtrl', DescripcionManga);
     
                 function ListarMangas($scope, factoryMangas){
 
@@ -32,6 +33,20 @@
                       });
       
                     }
+
+                }
+
+                function DescripcionManga($scope, factoryMangas, $routeParams){
+
+                    $scope.manga = {};
+
+                    factoryMangas.descripcionManga($routeParams.id).success(function(data) {
+                      
+                        $scope.manga.nombre = data.nombre;
+
+                    }).error(function(data){
+                      alert(data);
+                    });
 
                 }
 

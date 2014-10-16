@@ -18,6 +18,10 @@
                        templateUrl: 'views/insertar.html',
                        controller: 'InsertarCtrl'
                 })
+                .when('/api/manga/:id', {
+                        templateUrl: 'views/descripcion.html',
+                        controller: 'DescripcionCtrl'
+                })
                 .otherwise({
                       redirectTo: '/'
                 });
