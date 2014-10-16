@@ -1,5 +1,5 @@
-<h1>Formulario para actualizar los datos de {{manga}}</h1>
-<form ng-submit='actualizarManga(manga)'>
+<h1>Formulario para actualizar los datos de {{manga.nombre}}</h1>
+<form ng-submit='actualizar(manga)'>
 
 	<input type="text" ng-model='manga.nombre'>
 	<input type="submit" value='Actualizarar datos'>

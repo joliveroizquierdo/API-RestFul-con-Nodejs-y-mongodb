@@ -22,12 +22,14 @@
 
                     $scope.manga = {};
 
-                    $scope.insertar = function(){
+                    $scope.insertar = function(datos){
                       
-                      factoryMangas.guardarManga($scope.manga).success(function(data){
+                      factoryMangas.guardarManga(datos).success(function(data){
+
                           alert(data.mensaje +' '+ $scope.manga.nombre);
-                          $scope.manga = {};
+                          
                           $location.path('/api/mangas');
+
                       }).error(function(data){
                           alert('error al insertar regrese otro dia');
                       });
@@ -36,17 +38,33 @@
 
                 }
 
-                function DescripcionManga($scope, factoryMangas, $routeParams){
+                function DescripcionManga($scope, factoryMangas, $location, $routeParams){
 
                     $scope.manga = {};
 
-                    factoryMangas.descripcionManga($routeParams.id).success(function(data) {
+                    $scope.manga.id = $routeParams.id;
+
+                    factoryMangas.descripcionManga($scope.manga.id).success(function(data) {
                       
                         $scope.manga.nombre = data.nombre;
 
                     }).error(function(data){
-                      alert(data);
+                        alert(data);
                     });
+
+                        $scope.actualizar = function(datos){
+
+                          factoryMangas.actualizarManga($scope.manga.id, datos).success(function(data){
+
+                              alert(data.mensaje);
+
+                              $location.path('/api/mangas');
+
+                            }).error(function(data){
+                                alert(data);
+                            });
+
+                        };
 
                 }
 

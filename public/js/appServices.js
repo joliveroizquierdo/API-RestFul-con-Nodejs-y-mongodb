@@ -4,18 +4,17 @@
   angular.module('appServices', [])
          .factory('factoryMangas', function($http){
 
-            var urlBase = '/api/mangas';
             var servicios = {};
 
               servicios.obtenerMangas = function () {
 
-                  return $http.get(urlBase);
+                  return $http.get('/api/mangas');
 
               };
 
               servicios.guardarManga = function (datos) {
 
-                  return $http.post(urlBase, datos);
+                  return $http.post('/api/mangas', datos);
 
               };
 
@@ -24,6 +23,12 @@
                   return $http.get('api/manga/'+ id);
 
               };
+
+              servicios.actualizarManga = function (id, datos) {
+
+                  return $http.put('api/manga/'+ id, datos);
+
+              }
 
           return servicios;
 
